@@ -121,6 +121,10 @@ func (h *Handler) ServeCreateAlert(w http.ResponseWriter, r *http.Request) {
 	if action == "close" {
 		status = alert.StatusClosed
 	}
+	
+	if action == "active" {
+		status = alert.StatusActive
+	}
 
 	summary = validate.SanitizeText(summary, alert.MaxSummaryLength)
 	details = validate.SanitizeText(details, alert.MaxDetailsLength)
